@@ -74,7 +74,7 @@ export const MissionVision = () => {
               {/* Parallax Background Number */}
               <motion.span 
                 style={{ y: gridParallax1 }}
-                className="absolute origin-bottom-right -bottom-10 -right-5 font-display font-black text-[15rem] text-black/10 select-none pointer-events-none group-hover:scale-110 transition-transform duration-1000 ease-out"
+                className="absolute origin-bottom-right -bottom-10 -right-5 font-display font-black text-[10rem] md:text-[15rem] text-black/10 select-none pointer-events-none group-hover:scale-110 transition-transform duration-1000 ease-out"
               >
                 01
               </motion.span>
@@ -115,7 +115,7 @@ export const MissionVision = () => {
               {/* Parallax Background Number */}
               <motion.span 
                 style={{ y: gridParallax2 }}
-                className="absolute origin-bottom-right -bottom-10 -right-5 font-display font-black text-[15rem] text-primary/5 select-none pointer-events-none group-hover:scale-110 transition-transform duration-1000 ease-out"
+                className="absolute origin-bottom-right -bottom-10 -right-5 font-display font-black text-[10rem] md:text-[15rem] text-primary/5 select-none pointer-events-none group-hover:scale-110 transition-transform duration-1000 ease-out"
               >
                 02
               </motion.span>

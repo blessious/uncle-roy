@@ -45,15 +45,15 @@ export const Hero = () => {
               </a>
             </div>
 
-            <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
+            <div className="mt-12 flex flex-wrap gap-x-8 gap-y-6 max-w-md w-full justify-between sm:justify-start sm:grid sm:grid-cols-3 sm:gap-6">
               {[
                 { k: "12+", v: "Products" },
                 { k: "5★", v: "Panalo Reviews" },
                 { k: "100%", v: "Local Sourced" },
               ].map((s) => (
-                <div key={s.v}>
-                  <p className="font-display font-extrabold text-3xl text-foreground">{s.k}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{s.v}</p>
+                <div key={s.v} className="min-w-[80px]">
+                  <p className="font-display font-extrabold text-3xl md:text-3xl text-foreground">{s.k}</p>
+                  <p className="text-xs text-muted-foreground mt-1 whitespace-nowrap">{s.v}</p>
                 </div>
               ))}
             </div>
