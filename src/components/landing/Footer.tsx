@@ -1,4 +1,5 @@
 import { MapPin, Mail, Phone, ArrowUpRight } from "lucide-react";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
 
 export const Footer = () => (
   <footer id="contact" className="relative overflow-hidden bg-foreground text-background">
@@ -7,7 +8,7 @@ export const Footer = () => (
 
     <div className="container relative py-20 md:py-28">
       <div className="grid lg:grid-cols-2 gap-14 items-start">
-        <div>
+        <Reveal direction="up">
           <div className="flex items-center gap-3 mb-8">
             <span className="grid place-items-center w-12 h-12 rounded-2xl gradient-red text-primary-foreground font-display font-black text-xl shadow-red">
               UR
@@ -30,28 +31,32 @@ export const Footer = () => (
               <ArrowUpRight className="w-5 h-5" />
             </span>
           </a>
-        </div>
+        </Reveal>
 
-        <div className="grid sm:grid-cols-2 gap-5">
+        <StaggerGroup stagger={0.08} className="grid sm:grid-cols-2 gap-5">
           {[
             { icon: MapPin, label: "Address", value: "Poras, Boac, Marinduque", href: "#" },
             { icon: Mail, label: "Email", value: "uncleroy@gmail.com", href: "mailto:uncleroy@gmail.com" },
             { icon: Phone, label: "Contact", value: "+639 662 100 937", href: "tel:+639662100937" },
             { icon: ArrowUpRight, label: "Wholesale", value: "Distribution & Retail", href: "#" },
           ].map((item) => (
-            <a
+            <StaggerItem
               key={item.label}
-              href={item.href}
-              className="group block p-7 rounded-[2rem] bg-background/5 hover:bg-background/10 border border-background/10 transition"
+              direction="up"
             >
-              <item.icon className="w-6 h-6 mb-6 text-primary" />
-              <p className="text-xs uppercase tracking-widest text-background/50 mb-1">{item.label}</p>
-              <p className="font-display font-bold text-lg group-hover:text-primary transition">
-                {item.value}
-              </p>
-            </a>
+              <a
+                href={item.href}
+                className="group block p-7 rounded-[2rem] bg-background/5 hover:bg-background/10 border border-background/10 transition"
+              >
+                <item.icon className="w-6 h-6 mb-6 text-primary" />
+                <p className="text-xs uppercase tracking-widest text-background/50 mb-1">{item.label}</p>
+                <p className="font-display font-bold text-lg group-hover:text-primary transition">
+                  {item.value}
+                </p>
+              </a>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGroup>
       </div>
 
       <div className="mt-20 pt-8 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-4">

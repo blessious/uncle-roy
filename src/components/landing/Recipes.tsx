@@ -1,4 +1,6 @@
+import { motion } from "framer-motion";
 import { Play, Clock } from "lucide-react";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
 import silog from "@/assets/recipe-silog.jpg";
 import teriyaki from "@/assets/recipe-teriyaki.jpg";
 import bbq from "@/assets/recipe-bbq.jpg";
@@ -10,37 +12,42 @@ const recipes = [
 ];
 
 export const Recipes = () => (
-  <section id="recipes" className="py-20 md:py-32">
+  <section id="recipes" className="py-20 md:py-32 overflow-hidden">
     <div className="container">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-        <div className="max-w-2xl">
+        <Reveal direction="up" className="max-w-2xl">
           <p className="text-sm font-semibold tracking-widest uppercase text-secondary mb-3">Cook with Uncle Roy</p>
           <h2 className="font-display font-black text-4xl md:text-6xl leading-tight">
             Editorial recipes,<br />weeknight easy.
           </h2>
-        </div>
-        <a href="#" className="text-sm font-semibold underline-offset-4 hover:underline">
-          View all episodes →
-        </a>
+        </Reveal>
+        <Reveal direction="left" delay={0.15}>
+          <a href="#" className="text-sm font-semibold underline-offset-4 hover:underline">
+            View all episodes →
+          </a>
+        </Reveal>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-        {recipes.map((r, i) => (
-          <article
+      <StaggerGroup stagger={0.15} className="grid md:grid-cols-3 gap-6 lg:gap-8">
+        {recipes.map((r) => (
+          <StaggerItem
             key={r.title}
+            as="article"
+            direction="up"
             className="group relative overflow-hidden rounded-[2rem] aspect-[4/5] cursor-pointer shadow-soft hover:shadow-float transition-all duration-500 hover:-translate-y-2"
           >
-            <img
+            <motion.img
               src={r.img}
               alt={r.title}
               width={1024}
               height={1024}
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              className="absolute inset-0 w-full h-full object-cover"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
 
-            {/* Play button */}
             <div className="absolute top-6 right-6 grid place-items-center w-14 h-14 rounded-full bg-background/90 backdrop-blur group-hover:bg-primary group-hover:text-primary-foreground transition">
               <Play className="w-5 h-5 fill-current ml-0.5" />
             </div>
@@ -58,9 +65,9 @@ export const Recipes = () => (
                 {r.title}
               </h3>
             </div>
-          </article>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerGroup>
     </div>
   </section>
 );
