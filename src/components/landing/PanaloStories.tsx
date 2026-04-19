@@ -1,4 +1,5 @@
 import { Star, Quote } from "lucide-react";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
 
 const stories = [
   { name: "Maria S.", role: "Home Chef, Manila", text: "Lasa at amoy Jollibee patty! Sobrang sarap, naloka kami sa pamilya.", tone: "red", span: "md:row-span-2" },
@@ -15,9 +16,9 @@ const toneMap: Record<string, string> = {
 };
 
 export const PanaloStories = () => (
-  <section id="stories" className="py-20 md:py-32 bg-muted">
+  <section id="stories" className="py-20 md:py-32 bg-muted overflow-hidden">
     <div className="container">
-      <div className="text-center max-w-2xl mx-auto mb-16">
+      <Reveal direction="blur" className="text-center max-w-2xl mx-auto mb-16">
         <p className="text-sm font-semibold tracking-widest uppercase text-primary mb-3">Panalo Stories</p>
         <h2 className="font-display font-black text-4xl md:text-6xl leading-tight">
           The kitchen <span className="text-secondary">never lies.</span>
@@ -25,12 +26,17 @@ export const PanaloStories = () => (
         <p className="mt-5 text-muted-foreground text-lg">
           Real plates. Real reviews. From every corner of the Philippines.
         </p>
-      </div>
+      </Reveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 md:auto-rows-[minmax(180px,auto)]">
-        {stories.map((s, i) => (
-          <article
+      <StaggerGroup
+        stagger={0.1}
+        className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 md:auto-rows-[minmax(180px,auto)]"
+      >
+        {stories.map((s) => (
+          <StaggerItem
             key={s.name}
+            as="article"
+            direction="up"
             className={`group bg-background rounded-[2rem] p-7 md:p-8 shadow-soft hover:shadow-float transition-all duration-500 hover:-translate-y-1 flex flex-col ${s.span}`}
           >
             <div className={`inline-grid place-items-center w-12 h-12 rounded-2xl ${toneMap[s.tone]} mb-5`}>
@@ -50,9 +56,9 @@ export const PanaloStories = () => (
                 ))}
               </div>
             </div>
-          </article>
+          </StaggerItem>
         ))}
-      </div>
+      </StaggerGroup>
     </div>
   </section>
 );

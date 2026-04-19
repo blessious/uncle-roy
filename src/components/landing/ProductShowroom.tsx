@@ -1,5 +1,7 @@
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
+import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
 import tapa from "@/assets/pork-tapa.png";
 import lumpia from "@/assets/pork-lumpia.png";
 import longganisa from "@/assets/longganisa-card.png";
@@ -20,16 +22,16 @@ export const ProductShowroom = () => {
   };
 
   return (
-    <section id="products" className="py-20 md:py-32 bg-muted">
+    <section id="products" className="py-20 md:py-32 bg-muted overflow-hidden">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="max-w-2xl">
+          <Reveal direction="up" className="max-w-2xl">
             <p className="text-sm font-semibold tracking-widest uppercase text-primary mb-3">Showroom</p>
             <h2 className="font-display font-black text-4xl md:text-6xl leading-tight">
               Crafted, packed, ready.
             </h2>
-          </div>
-          <div className="flex items-center gap-3">
+          </Reveal>
+          <Reveal direction="left" delay={0.15} className="flex items-center gap-3">
             <button
               onClick={() => scroll(-1)}
               aria-label="Previous"
@@ -44,47 +46,56 @@ export const ProductShowroom = () => {
             >
               <ArrowRight className="w-5 h-5" />
             </button>
-          </div>
+          </Reveal>
         </div>
       </div>
 
-      <div
-        ref={scrollerRef}
-        className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-6 md:px-[max(1.5rem,calc((100vw-1400px)/2+1.5rem))] pb-4"
+      <StaggerGroup
+        stagger={0.12}
+        amount={0.1}
       >
-        {products.map((p, i) => (
-          <article
-            key={p.name}
-            className="group snap-start shrink-0 w-[280px] sm:w-[340px] bg-background rounded-[2.5rem] p-6 shadow-soft hover:shadow-float transition-all duration-500 hover:-translate-y-2"
-          >
-            <div className={`relative h-64 rounded-[2rem] overflow-hidden ${p.tone === "red" ? "gradient-red-soft" : "gradient-green-soft"}`}>
-              <img
-                src={p.img}
-                alt={p.name}
-                width={768}
-                height={768}
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-contain p-4 product-drop-shadow group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-700"
-              />
-              <span className={`absolute top-4 left-4 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wider uppercase ${p.tone === "red" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"}`}>
-                {p.tag}
-              </span>
-            </div>
-            <div className="mt-6 flex items-start justify-between gap-3">
-              <div>
-                <h3 className="font-display font-extrabold text-xl">{p.name}</h3>
-                <p className="text-sm text-muted-foreground mt-1">{p.weight}</p>
+        <div
+          ref={scrollerRef}
+          className="flex gap-6 overflow-x-auto scrollbar-hide snap-x snap-mandatory px-6 md:px-[max(1.5rem,calc((100vw-1400px)/2+1.5rem))] pb-4"
+        >
+          {products.map((p) => (
+            <StaggerItem
+              key={p.name}
+              as="article"
+              direction="up"
+              className="group snap-start shrink-0 w-[280px] sm:w-[340px] bg-background rounded-[2.5rem] p-6 shadow-soft hover:shadow-float transition-all duration-500 hover:-translate-y-2"
+            >
+              <div className={`relative h-64 rounded-[2rem] overflow-hidden ${p.tone === "red" ? "gradient-red-soft" : "gradient-green-soft"}`}>
+                <motion.img
+                  src={p.img}
+                  alt={p.name}
+                  width={768}
+                  height={768}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-contain p-4 product-drop-shadow"
+                  whileHover={{ scale: 1.12, rotate: -4 }}
+                  transition={{ type: "spring", stiffness: 120, damping: 14 }}
+                />
+                <span className={`absolute top-4 left-4 px-3 py-1.5 rounded-full text-[10px] font-bold tracking-wider uppercase ${p.tone === "red" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"}`}>
+                  {p.tag}
+                </span>
               </div>
-              <p className="font-display font-black text-2xl text-foreground">₱{p.price.toFixed(0)}</p>
-            </div>
-            <button className="mt-6 w-full inline-flex items-center justify-center gap-2 py-4 rounded-full bg-foreground text-background font-semibold hover:bg-primary transition group/btn">
-              Order Now
-              <Plus className="w-4 h-4 group-hover/btn:rotate-90 transition-transform" />
-            </button>
-          </article>
-        ))}
-        <div className="shrink-0 w-4" />
-      </div>
+              <div className="mt-6 flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-display font-extrabold text-xl">{p.name}</h3>
+                  <p className="text-sm text-muted-foreground mt-1">{p.weight}</p>
+                </div>
+                <p className="font-display font-black text-2xl text-foreground">₱{p.price.toFixed(0)}</p>
+              </div>
+              <button className="mt-6 w-full inline-flex items-center justify-center gap-2 py-4 rounded-full bg-foreground text-background font-semibold hover:bg-primary transition group/btn">
+                Order Now
+                <Plus className="w-4 h-4 group-hover/btn:rotate-90 transition-transform" />
+              </button>
+            </StaggerItem>
+          ))}
+          <div className="shrink-0 w-4" />
+        </div>
+      </StaggerGroup>
     </section>
   );
 };

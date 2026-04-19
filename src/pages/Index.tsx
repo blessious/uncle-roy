@@ -5,10 +5,12 @@ import { ProductShowroom } from "@/components/landing/ProductShowroom";
 import { Recipes } from "@/components/landing/Recipes";
 import { PanaloStories } from "@/components/landing/PanaloStories";
 import { Footer } from "@/components/landing/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
+      <SmoothScroll />
       <Navbar />
       <Hero />
       <MissionVision />
