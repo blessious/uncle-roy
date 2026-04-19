@@ -9,7 +9,7 @@ export const Footer = () => (
     <div className="absolute -bottom-40 -left-40 w-[350px] h-[350px] md:w-[500px] md:h-[500px] rounded-full bg-secondary/25 blur-3xl" />
 
     <div className="container relative py-16 sm:py-20 md:py-28">
-      <div className="grid lg:grid-cols-2 gap-10 sm:gap-14 items-start">
+      <div className="grid md:grid-cols-2 gap-10 sm:gap-14 items-start">
 
         {/* Left: CTA */}
         <Reveal direction="up">

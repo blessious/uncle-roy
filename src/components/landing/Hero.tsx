@@ -8,7 +8,6 @@ export const Hero = () => {
   const containerRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
 
-  const imgY = useTransform(scrollY, [0, 500], [0, 60]);
   const rotate = useTransform(scrollY, [0, 500], [0, 5]);
 
   return (
@@ -18,11 +17,11 @@ export const Hero = () => {
       <div className="absolute top-1/2 -right-40 w-[400px] h-[400px] md:w-[600px] md:h-[600px] rounded-full bg-accent/10 blur-[100px]" />
 
       <div className="container relative">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+        <div className="grid md:grid-cols-12 gap-8 items-center">
           {/* Image — shown first on mobile (natural flow), last on desktop */}
-          <div className="lg:col-span-6 lg:order-2">
+          <div className="md:col-span-6 md:order-2">
             <motion.div
-              style={{ y: imgY, rotate }}
+              style={{ rotate }}
               className="relative z-10 rounded-3xl sm:rounded-[3rem] overflow-hidden shadow-float w-full max-w-xs sm:max-w-sm md:max-w-[540px] mx-auto aspect-[4/5] sm:aspect-[4/5] md:aspect-[3/4]"
             >
               <img
@@ -39,8 +38,8 @@ export const Hero = () => {
           </div>
 
           {/* Copy — shown second on mobile (after image), first on desktop */}
-          <Reveal direction="up" distance={40} className="lg:col-span-6 lg:order-1">
-            <h1 className="font-display font-black text-foreground text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl leading-[1] sm:leading-[0.95] tracking-tight">
+          <Reveal direction="up" distance={40} className="md:col-span-6 md:order-1">
+            <h1 className="font-display font-black text-foreground text-[2.5rem] sm:text-5xl md:text-5xl lg:text-7xl leading-[1] sm:leading-[0.95] tracking-tight">
               Proudly manufacturing <span className="text-primary">quality</span> frozen products in <span className="text-secondary">Marinduque.</span>
             </h1>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed font-medium">
@@ -66,7 +65,7 @@ export const Hero = () => {
 
             <div className="mt-10 sm:mt-12 grid grid-cols-3 gap-4 sm:gap-6 max-w-sm sm:max-w-md">
               {[
-                { k: "12+", v: "Products" },
+                { k: "20+", v: "Products" },
                 { k: "5★", v: "Reviews" },
                 { k: "100%", v: "Local" },
               ].map((s) => (
