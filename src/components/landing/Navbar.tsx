@@ -55,7 +55,7 @@ export const Navbar = () => {
             : "shadow-soft px-4 sm:px-8 md:px-10 py-2 sm:py-3 mt-1 sm:mt-2"
         }`}
       >
-        <div className="flex items-center justify-between gap-4 lg:gap-12 transition-all duration-500">
+        <div className="flex items-center justify-between gap-4 md:gap-8 lg:gap-12 transition-all duration-500">
           <a href="#top" className="flex items-center gap-2 shrink-0">
             <img
               src={logo}
@@ -66,7 +66,7 @@ export const Navbar = () => {
             />
           </a>
 
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1">
             {links.map((l) => (
               <a
                 key={l.href}
@@ -83,17 +83,8 @@ export const Navbar = () => {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href="#products"
-              className={`hidden lg:inline-flex items-center rounded-full gradient-red text-primary-foreground text-sm font-bold shadow-red hover:scale-105 transition-all shrink-0 ${
-                scrolled ? "px-5 py-2" : "px-6 py-2.5"
-              }`}
-            >
-              Order Now
-            </a>
-
             <button
-              className="lg:hidden grid place-items-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-foreground/5 shrink-0"
+              className="md:hidden grid place-items-center w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-foreground/5 shrink-0"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -108,7 +99,7 @@ export const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden overflow-hidden"
+              className="md:hidden overflow-hidden"
             >
               <nav className="flex flex-col gap-1 pb-4 pt-3">
                 {links.map((l) => (
@@ -125,13 +116,6 @@ export const Navbar = () => {
                     {l.label}
                   </a>
                 ))}
-                <a
-                  href="#products"
-                  onClick={() => setOpen(false)}
-                  className="mt-2 text-center px-5 py-3 rounded-xl gradient-red text-primary-foreground text-sm font-bold shadow-red"
-                >
-                  Order Now
-                </a>
               </nav>
             </motion.div>
           )}

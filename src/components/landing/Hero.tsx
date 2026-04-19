@@ -45,21 +45,29 @@ export const Hero = () => {
             <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-sm lg:text-xl text-muted-foreground max-w-xl leading-relaxed font-medium">
               Freshly made • Carefully frozen • Locally trusted
             </p>
-            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <div className="mt-6 sm:mt-8 flex flex-col gap-4">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <a
+                  href="#products"
+                  className="group inline-flex items-center gap-3 pl-6 sm:pl-7 pr-2 sm:pr-3 py-2.5 sm:py-3 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition text-sm sm:text-base shadow-soft"
+                >
+                  Explore Products
+                  <span className="grid place-items-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-background/20 group-hover:translate-x-1 transition shrink-0 border border-background/10">
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </span>
+                </a>
+                <a
+                  href="#recipes"
+                  className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-4 rounded-full border-2 border-foreground/10 hover:border-foreground/30 font-semibold transition text-sm sm:text-base"
+                >
+                  Watch recipes
+                </a>
+              </div>
               <a
                 href="#products"
-                className="group inline-flex items-center gap-3 pl-6 sm:pl-7 pr-2 sm:pr-3 py-2.5 sm:py-3 rounded-full gradient-red text-primary-foreground font-semibold shadow-red hover:scale-[1.03] transition text-sm sm:text-base"
+                className="inline-flex items-center justify-center px-8 py-3 sm:py-4 rounded-full gradient-red text-primary-foreground font-bold shadow-red hover:scale-[1.02] transition text-sm sm:text-base w-full sm:w-max"
               >
-                Explore Products
-                <span className="grid place-items-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-background/20 group-hover:translate-x-1 transition shrink-0">
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                </span>
-              </a>
-              <a
-                href="#recipes"
-                className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 sm:py-4 rounded-full border-2 border-foreground/10 hover:border-foreground/30 font-semibold transition text-sm sm:text-base"
-              >
-                Watch recipes
+                Order Now
               </a>
             </div>
 
