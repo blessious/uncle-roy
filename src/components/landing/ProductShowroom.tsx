@@ -2,10 +2,10 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Plus } from "lucide-react";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
-import tapa from "@/assets/pork-tapa.png";
-import lumpia from "@/assets/pork-lumpia.png";
-import longganisa from "@/assets/longganisa-card.png";
-import pares from "@/assets/beef-pares.png";
+import tapa from "@/products/porktapa.jpg";
+import lumpia from "@/products/porklumpia.jpg";
+import longganisa from "@/products/skinlesslonganisa.jpg";
+import pares from "@/products/beefpares.jpg";
 
 const products = [
   { name: "Pork Tapa", weight: "170g", price: 95, img: tapa, tag: "Bestseller", tone: "red" },
@@ -87,10 +87,15 @@ export const ProductShowroom = () => {
                 </div>
                 <p className="font-display font-black text-2xl text-foreground">₱{p.price.toFixed(0)}</p>
               </div>
-              <button className="mt-6 w-full inline-flex items-center justify-center gap-2 py-4 rounded-full bg-foreground text-background font-semibold hover:bg-primary transition group/btn">
+              <a 
+                href="https://www.facebook.com/UncleRoy2019" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="mt-6 w-full inline-flex items-center justify-center gap-2 py-4 rounded-full bg-foreground text-background font-semibold hover:bg-primary transition group/btn text-sm"
+              >
                 Order Now
                 <Plus className="w-4 h-4 group-hover/btn:rotate-90 transition-transform" />
-              </button>
+              </a>
             </StaggerItem>
           ))}
           <div className="shrink-0 w-4" />

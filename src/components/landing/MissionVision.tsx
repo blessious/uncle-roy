@@ -17,13 +17,16 @@ export const MissionVision = () => {
     <section
       id="mission"
       ref={ref}
-      className="relative py-28 md:py-40 overflow-hidden bg-background"
+      className="relative py-28 md:py-48 overflow-hidden bg-background"
     >
+      {/* Decorative atmospheric elements */}
+      <div className="absolute top-1/4 -right-20 w-80 h-80 rounded-full bg-primary/5 blur-3xl animate-blob" style={{ animationDelay: "2s" }} />
+      <div className="absolute bottom-1/4 -left-20 w-80 h-80 rounded-full bg-secondary/5 blur-3xl animate-blob" />
       {/* Giant scrolling word */}
       <motion.div
         style={{ x: marqueeX }}
         aria-hidden
-        className="pointer-events-none select-none absolute top-10 left-0 whitespace-nowrap font-display font-black text-[18vw] md:text-[14vw] leading-none text-foreground/[0.04] tracking-tighter"
+        className="pointer-events-none select-none absolute top-10 left-0 whitespace-nowrap font-display font-black text-[18vw] md:text-[14vw] leading-none text-foreground/[0.04] tracking-tighter will-change-transform"
       >
         MISSION · VISION · MISSION · VISION
       </motion.div>
@@ -42,13 +45,13 @@ export const MissionVision = () => {
               The Core
             </p>
           </div>
-          <Reveal direction="blur" className="md:col-span-7 md:col-start-4">
-            <h2 className="font-display font-black text-4xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
-              We don't just make food.{" "}
-              <span className="italic font-light text-foreground/40">
-                We make a province proud.
-              </span>
+          <Reveal direction="blur" className="md:col-span-8 md:col-start-4">
+            <h2 className="font-display font-black text-3xl md:text-5xl tracking-tight uppercase text-foreground mb-4">
+              UNCLE ROY PROCESSED FOOD MANUFACTURING
             </h2>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              UNCLE ROY manufacturer of frozen foods and condiments located in Boac, Marinduque. Its products and services span across Marinduque, CALABARZON and NCR. From processed meat, ready to heat, ready to grill and cold cuts. Making it the most diversified food player in the province of Marinduque.
+            </p>
           </Reveal>
         </div>
 
@@ -58,11 +61,11 @@ export const MissionVision = () => {
             <div className="md:col-span-4 flex md:flex-col items-start justify-between gap-6">
               <div className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full bg-primary animate-pulse" />
-                <span className="text-xs font-bold tracking-[0.3em] uppercase text-primary">
+                <span className="text-sm md:text-base font-black tracking-[0.4em] uppercase text-primary">
                   Mission
                 </span>
               </div>
-              <span className="font-display font-black text-7xl md:text-8xl text-primary/15 leading-none">
+              <span className="font-display font-black text-8xl md:text-[10rem] text-primary/10 leading-none">
                 M
               </span>
             </div>
@@ -100,11 +103,11 @@ export const MissionVision = () => {
             <div className="md:col-span-4 md:order-1 flex md:flex-col items-start md:items-end justify-between gap-6">
               <div className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full bg-secondary animate-pulse" />
-                <span className="text-xs font-bold tracking-[0.3em] uppercase text-secondary">
+                <span className="text-sm md:text-base font-black tracking-[0.4em] uppercase text-secondary">
                   Vision
                 </span>
               </div>
-              <span className="font-display font-black text-7xl md:text-8xl text-secondary/15 leading-none">
+              <span className="font-display font-black text-8xl md:text-[10rem] text-secondary/10 leading-none">
                 V
               </span>
             </div>

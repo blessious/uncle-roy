@@ -44,7 +44,7 @@ export const Reveal = ({
   duration = 0.8,
   direction = "up",
   distance = 32,
-  once = true,
+  once = false,
   amount = 0.2,
   as = "div",
 }: RevealProps) => {
@@ -90,7 +90,7 @@ export const StaggerGroup = ({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount }}
+      viewport={{ once: false, amount }}
       variants={{
         hidden: {},
         visible: { transition: { staggerChildren: stagger, delayChildren: delay } },

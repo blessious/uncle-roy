@@ -1,111 +1,86 @@
-import { useEffect, useRef, useState } from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
-import longganisa from "@/assets/longganisa-hero.png";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Sparkles, Coffee } from "lucide-react";
+import { Reveal } from "@/components/Reveal";
+import heroImg from "@/hero.png";
 
 export const Hero = () => {
-  const ref = useRef<HTMLImageElement>(null);
-  const [y, setY] = useState(0);
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollY } = useScroll();
 
-  useEffect(() => {
-    const onScroll = () => setY(window.scrollY);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const rotate = Math.min(y * 0.05, 25);
-  const scale = 1 + Math.min(y * 0.0004, 0.08);
-  const translate = Math.min(y * 0.15, 60);
+  const imgY = useTransform(scrollY, [0, 500], [0, 60]);
+  const rotate = useTransform(scrollY, [0, 500], [0, 5]);
 
   return (
-    <section id="top" className="relative pt-28 md:pt-36 pb-20 md:pb-32 overflow-hidden">
-      {/* Decorative blobs */}
-      <div className="absolute -top-20 -left-32 w-[500px] h-[500px] rounded-full bg-primary/10 blur-3xl animate-blob" />
-      <div className="absolute top-40 -right-32 w-[480px] h-[480px] rounded-full bg-secondary/10 blur-3xl animate-blob" style={{ animationDelay: "3s" }} />
+    <section id="top" ref={containerRef} className="relative pt-32 md:pt-40 pb-20 md:pb-32 overflow-hidden bg-background">
+      {/* Soft atmospheric glows */}
+      <div className="absolute -top-40 -left-40 w-[800px] h-[800px] rounded-full bg-primary/5 blur-[120px]" />
+      <div className="absolute top-1/2 -right-40 w-[600px] h-[600px] rounded-full bg-accent/10 blur-[100px]" />
 
-      <div className="container relative grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-        {/* LEFT: product image */}
-        <div className="order-2 lg:order-1 relative h-[380px] sm:h-[480px] lg:h-[620px]">
-          <div className="absolute inset-0 grid place-items-center">
-            <div className="absolute w-[85%] h-[85%] rounded-full gradient-red-soft blur-2xl" />
-            <img
-              ref={ref}
-              src={longganisa}
-              alt="Skinless Longganisa premium Filipino sausage"
-              width={1024}
-              height={1024}
-              className="relative w-full h-full object-contain product-drop-shadow transition-transform duration-300 ease-out"
-              style={{
-                transform: `translateY(${-translate}px) rotate(${rotate}deg) scale(${scale})`,
-              }}
-            />
-            {/* Floating badge */}
-            <div className="absolute top-4 right-2 sm:top-8 sm:right-8 bg-background rounded-3xl shadow-float px-5 py-3 flex items-center gap-3 animate-float-slow">
-              <div className="w-10 h-10 rounded-2xl gradient-green grid place-items-center">
-                <Sparkles className="w-5 h-5 text-secondary-foreground" />
-              </div>
-              <div>
-                <p className="font-display font-bold text-sm leading-none">100% Local</p>
-                <p className="text-xs text-muted-foreground">Marinduque made</p>
-              </div>
+      <div className="container relative">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* LEFT: Copy */}
+          <Reveal direction="up" distance={40} className="lg:col-span-6 order-2 lg:order-1">
+            <h1 className="font-display font-black text-foreground text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
+              Proudly manufacturing <span className="text-primary">quality</span> frozen products in <span className="text-secondary">Marinduque.</span>
+            </h1>
+            <p className="mt-6 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed font-medium">
+              Freshly made • Carefully frozen • Locally trusted
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href="#products"
+                className="group inline-flex items-center gap-3 pl-7 pr-3 py-3 rounded-full gradient-red text-primary-foreground font-semibold shadow-red hover:scale-[1.03] transition"
+              >
+                Explore Products
+                <span className="grid place-items-center w-10 h-10 rounded-full bg-background/20 group-hover:translate-x-1 transition">
+                  <ArrowRight className="w-5 h-5" />
+                </span>
+              </a>
+              <a
+                href="#recipes"
+                className="inline-flex items-center gap-2 px-7 py-4 rounded-full border-2 border-foreground/10 hover:border-foreground/30 font-semibold transition"
+              >
+                Watch recipes
+              </a>
             </div>
-            {/* Price chip */}
-            <div className="absolute bottom-2 left-2 sm:bottom-10 sm:left-4 bg-background rounded-3xl shadow-float px-5 py-3 animate-float-slow" style={{ animationDelay: "1.5s" }}>
-              <p className="text-xs text-muted-foreground">Skinless Longganisa</p>
-              <p className="font-display font-extrabold text-lg text-primary">₱65.00</p>
+
+            <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
+              {[
+                { k: "12+", v: "Products" },
+                { k: "5★", v: "Panalo Reviews" },
+                { k: "100%", v: "Local Sourced" },
+              ].map((s) => (
+                <div key={s.v}>
+                  <p className="font-display font-extrabold text-3xl text-foreground">{s.k}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{s.v}</p>
+                </div>
+              ))}
             </div>
-          </div>
-        </div>
+          </Reveal>
 
-        {/* RIGHT: copy */}
-        <div className="order-1 lg:order-2 animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase mb-6">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            Boac, Marinduque
-          </div>
-          <h1 className="font-display font-black text-foreground text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
-            The Most{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-primary">Diversified</span>
-              <span className="absolute inset-x-0 bottom-2 h-3 bg-primary/15 -z-0 rounded" />
-            </span>{" "}
-            Food Player in <span className="text-secondary">Marinduque.</span>
-          </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Crafted with care in Poras, Boac. From skinless longganisa to restaurant-grade beef pares —
-            Uncle Roy brings the taste of home to every Filipino table.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#products"
-              className="group inline-flex items-center gap-3 pl-7 pr-3 py-3 rounded-full gradient-red text-primary-foreground font-semibold shadow-red hover:scale-[1.03] transition"
+          {/* RIGHT: Featured Lifestyle Image */}
+          <div className="lg:col-span-6 order-1 lg:order-2">
+            <motion.div
+              style={{ y: imgY, rotate }}
+              className="relative z-10 rounded-[3rem] overflow-hidden shadow-float w-full max-w-[540px] mx-auto lg:ml-auto aspect-[4/5] md:aspect-[3/4]"
             >
-              Explore Products
-              <span className="grid place-items-center w-10 h-10 rounded-full bg-background/20 group-hover:translate-x-1 transition">
-                <ArrowRight className="w-5 h-5" />
-              </span>
-            </a>
-            <a
-              href="#recipes"
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-full border-2 border-foreground/10 hover:border-foreground/30 font-semibold transition"
-            >
-              Watch recipes
-            </a>
-          </div>
+              <img 
+                src={heroImg} 
+                alt="Happy customer with Uncle Roy breakfast plate" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+            </motion.div>
 
-          <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
-            {[
-              { k: "12+", v: "Products" },
-              { k: "5★", v: "Panalo Reviews" },
-              { k: "100%", v: "Local Sourced" },
-            ].map((s) => (
-              <div key={s.v}>
-                <p className="font-display font-extrabold text-3xl text-foreground">{s.k}</p>
-                <p className="text-xs text-muted-foreground mt-1">{s.v}</p>
-              </div>
-            ))}
+            {/* Background design elements */}
+            <div className="absolute -bottom-10 -right-10 w-64 h-64 rounded-full bg-secondary/10 blur-3xl -z-0" />
+            <div className="absolute -top-10 -left-10 w-48 h-48 border border-foreground/5 rounded-full -z-0" />
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+export default Hero;

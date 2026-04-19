@@ -1,64 +1,63 @@
-import { Star, Quote } from "lucide-react";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
+import rev1 from "@/reviews/1.jpg";
+import rev2 from "@/reviews/2.jpg";
+import rev3 from "@/reviews/3.jpg";
+import rev4 from "@/reviews/4.jpg";
+import rev5 from "@/reviews/5.jpg";
+import rev6 from "@/reviews/6.jpg";
 
-const stories = [
-  { name: "Maria S.", role: "Home Chef, Manila", text: "Lasa at amoy Jollibee patty! Sobrang sarap, naloka kami sa pamilya.", tone: "red", span: "md:row-span-2" },
-  { name: "Joel R.", role: "Foodie, Cebu", text: "Masarap, tender and juicy. Hindi mo aakalain na frozen pala — restaurant level.", tone: "green", span: "" },
-  { name: "Anna L.", role: "Mom of 3, QC", text: "The corned beef is restaurant grade. My kids ask for Uncle Roy every weekend.", tone: "gold", span: "" },
-  { name: "Carlo M.", role: "Chef, Marinduque", text: "Local pride. The tapa is balanced — not too sweet, not too salty. Perfect.", tone: "red", span: "" },
-  { name: "Riza T.", role: "OFW Returnee", text: "Reminds me of my lola's cooking. Panalo talaga ang Uncle Roy!", tone: "green", span: "md:row-span-2" },
+const reviews = [
+  { img: rev1, alt: "Customer review 1" },
+  { img: rev2, alt: "Customer review 2" },
+  { img: rev3, alt: "Customer review 3" },
+  { img: rev4, alt: "Customer review 4" },
+  { img: rev5, alt: "Customer review 5" },
+  { img: rev6, alt: "Customer review 6" },
 ];
 
-const toneMap: Record<string, string> = {
-  red: "gradient-red-soft text-primary",
-  green: "gradient-green-soft text-secondary",
-  gold: "bg-accent/15 text-accent-foreground",
-};
-
 export const PanaloStories = () => (
-  <section id="stories" className="py-20 md:py-32 bg-muted overflow-hidden">
+  <section id="stories" className="py-16 md:py-24 bg-muted/50 overflow-hidden">
     <div className="container">
-      <Reveal direction="blur" className="text-center max-w-2xl mx-auto mb-16">
-        <p className="text-sm font-semibold tracking-widest uppercase text-primary mb-3">Panalo Stories</p>
-        <h2 className="font-display font-black text-4xl md:text-6xl leading-tight">
-          The kitchen <span className="text-secondary">never lies.</span>
+      <Reveal direction="blur" className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <h2 className="font-display font-black text-5xl md:text-7xl leading-[0.9] tracking-tighter mb-8 italic">
+          What they’re <br />
+          <span className="text-primary not-italic">saying.</span>
         </h2>
-        <p className="mt-5 text-muted-foreground text-lg">
-          Real plates. Real reviews. From every corner of the Philippines.
-        </p>
       </Reveal>
 
       <StaggerGroup
-        stagger={0.1}
-        className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 md:auto-rows-[minmax(180px,auto)]"
+        stagger={0.12}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
       >
-        {stories.map((s) => (
+        {reviews.map((rev, i) => (
           <StaggerItem
-            key={s.name}
-            as="article"
+            key={i}
             direction="up"
-            className={`group bg-background rounded-[2rem] p-7 md:p-8 shadow-soft hover:shadow-float transition-all duration-500 hover:-translate-y-1 flex flex-col ${s.span}`}
+            distance={40}
           >
-            <div className={`inline-grid place-items-center w-12 h-12 rounded-2xl ${toneMap[s.tone]} mb-5`}>
-              <Quote className="w-5 h-5" />
-            </div>
-            <p className="font-display font-bold text-lg md:text-xl leading-snug text-foreground flex-1">
-              "{s.text}"
-            </p>
-            <div className="mt-6 flex items-center justify-between pt-5 border-t border-foreground/5">
-              <div>
-                <p className="font-semibold text-sm">{s.name}</p>
-                <p className="text-xs text-muted-foreground">{s.role}</p>
+            <div className="group relative rounded-[2.5rem] overflow-hidden bg-background p-2 border border-foreground/5 shadow-soft hover:shadow-float transition-all duration-700 hover:-translate-y-2 cursor-zoom-in h-full">
+              <div className="relative overflow-hidden rounded-[2rem] aspect-[4/5]">
+                <img 
+                  src={rev.img} 
+                  alt={rev.alt} 
+                  className="absolute inset-0 w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               </div>
-              <div className="flex gap-0.5">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <Star key={j} className="w-3.5 h-3.5 fill-accent text-accent" />
-                ))}
+              
+              {/* Decorative corner accent */}
+              <div className="absolute top-6 right-6 w-10 h-10 rounded-full bg-white/90 backdrop-blur shadow-sm flex items-center justify-center opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all duration-500">
+                <span className="text-xs font-black text-primary">★</span>
               </div>
             </div>
           </StaggerItem>
         ))}
       </StaggerGroup>
+      
+      {/* Background brand mark */}
+      <div className="absolute -bottom-20 -right-20 pointer-events-none opacity-[0.03] select-none">
+        <p className="font-display font-black text-[30vw] leading-none">PANALO</p>
+      </div>
     </div>
   </section>
 );

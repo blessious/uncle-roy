@@ -1,5 +1,6 @@
-import { MapPin, Mail, Phone, ArrowUpRight } from "lucide-react";
+import { MapPin, Mail, Phone, Facebook, MessageSquare } from "lucide-react";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/Reveal";
+import logo from "@/logo.png";
 
 export const Footer = () => (
   <footer id="contact" className="relative overflow-hidden bg-foreground text-background">
@@ -10,10 +11,7 @@ export const Footer = () => (
       <div className="grid lg:grid-cols-2 gap-14 items-start">
         <Reveal direction="up">
           <div className="flex items-center gap-3 mb-8">
-            <span className="grid place-items-center w-12 h-12 rounded-2xl gradient-red text-primary-foreground font-display font-black text-xl shadow-red">
-              UR
-            </span>
-            <span className="font-display font-extrabold text-xl">UNCLE ROY</span>
+            <img src={logo} alt="Uncle Roy Logo" className="h-12 w-auto object-contain brightness-0 invert" />
           </div>
           <h3 className="font-display font-black text-4xl md:text-6xl leading-[1.05] tracking-tight">
             Got a craving<br />
@@ -23,12 +21,14 @@ export const Footer = () => (
             For wholesale, distribution, or general inquiries — message us. We reply faster than your rice cooks.
           </p>
           <a
-            href="mailto:uncleroy@gmail.com"
+            href="https://www.facebook.com/UncleRoy2019"
+            target="_blank"
+            rel="noreferrer"
             className="mt-8 inline-flex items-center gap-3 pl-7 pr-3 py-3 rounded-full gradient-red text-primary-foreground font-semibold shadow-red hover:scale-[1.03] transition"
           >
             Send an inquiry
             <span className="grid place-items-center w-10 h-10 rounded-full bg-background/20">
-              <ArrowUpRight className="w-5 h-5" />
+              <MessageSquare className="w-5 h-5" />
             </span>
           </a>
         </Reveal>
@@ -36,9 +36,9 @@ export const Footer = () => (
         <StaggerGroup stagger={0.08} className="grid sm:grid-cols-2 gap-5">
           {[
             { icon: MapPin, label: "Address", value: "Poras, Boac, Marinduque", href: "#" },
-            { icon: Mail, label: "Email", value: "uncleroy@gmail.com", href: "mailto:uncleroy@gmail.com" },
-            { icon: Phone, label: "Contact", value: "+639 662 100 937", href: "tel:+639662100937" },
-            { icon: ArrowUpRight, label: "Wholesale", value: "Distribution & Retail", href: "#" },
+            { icon: Mail, label: "Email", value: "uncleroypfm@gmail.com", href: "mailto:uncleroypfm@gmail.com" },
+            { icon: Phone, label: "Mobile", value: "0947 502 8284", href: "tel:09475028284" },
+            { icon: Facebook, label: "Facebook", value: "Uncle Roy PFM", href: "https://www.facebook.com/UncleRoy2019" },
           ].map((item) => (
             <StaggerItem
               key={item.label}
