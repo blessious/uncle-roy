@@ -39,10 +39,10 @@ export const Hero = () => {
 
           {/* Copy — shown second on mobile (after image), first on desktop */}
           <Reveal direction="up" distance={40} className="md:col-span-6 md:order-1">
-            <h1 className="font-display font-black text-foreground text-[2.5rem] sm:text-5xl md:text-5xl lg:text-7xl leading-[1] sm:leading-[0.95] tracking-tight">
+            <h1 className="font-display font-black text-foreground text-[2.5rem] sm:text-5xl md:text-4xl lg:text-6xl xl:text-7xl leading-[1] sm:leading-[0.95] tracking-tight">
               Proudly manufacturing <span className="text-primary">quality</span> frozen products in <span className="text-secondary">Marinduque.</span>
             </h1>
-            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed font-medium">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-sm lg:text-xl text-muted-foreground max-w-xl leading-relaxed font-medium">
               Freshly made • Carefully frozen • Locally trusted
             </p>
             <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">

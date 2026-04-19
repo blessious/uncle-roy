@@ -50,7 +50,7 @@ export const MissionVision = () => {
             </p>
           </div>
           <Reveal direction="blur" className="md:col-span-8 md:col-start-4">
-            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-5xl tracking-tight uppercase text-foreground mb-3 sm:mb-4">
+            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tight uppercase text-foreground mb-3 sm:mb-4">
               Uncle Roy Processed Food Manufacturing
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -81,13 +81,13 @@ export const MissionVision = () => {
 
               <div className="relative z-10">
                 <div className="w-10 h-1 bg-white/40 mb-5 group-hover:w-16 group-hover:bg-white transition-all duration-500" />
-                <h3 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-white tracking-tighter uppercase mb-3">
+                <h3 className="font-display font-black text-4xl sm:text-5xl md:text-4xl lg:text-6xl text-white tracking-tighter uppercase mb-3">
                   Mission
                 </h3>
               </div>
 
               <div className="relative z-10">
-                <p className="font-display font-medium text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-snug">
+                <p className="font-display font-medium text-base sm:text-lg md:text-sm lg:text-2xl text-white leading-snug">
                   Empowering men and women through{" "}
                   <span className="text-black font-black">cooking and selling</span>{" "}
                   frozen foods. Offering quality products by using and promoting{" "}
@@ -95,7 +95,7 @@ export const MissionVision = () => {
                   in the province with affordable prices.
                 </p>
                 <div className="mt-6 flex items-center gap-3 text-white/70 group-hover:gap-5 transition-all duration-400">
-                  <span className="text-xs font-black tracking-widest uppercase">Since 2026</span>
+                  <span className="text-xs font-black tracking-widest uppercase">Since 2019</span>
                   <div className="h-px w-6 bg-white/40 group-hover:w-10 transition-all duration-500" />
                 </div>
               </div>
@@ -121,13 +121,13 @@ export const MissionVision = () => {
 
               <div className="relative z-10">
                 <div className="w-10 h-1 bg-primary/30 mb-5 group-hover:w-16 group-hover:bg-primary transition-all duration-500" />
-                <h3 className="font-display font-black text-4xl sm:text-5xl md:text-6xl text-primary tracking-tighter uppercase mb-3">
+                <h3 className="font-display font-black text-4xl sm:text-5xl md:text-4xl lg:text-6xl text-primary tracking-tighter uppercase mb-3">
                   Vision
                 </h3>
               </div>
 
               <div className="relative z-10">
-                <p className="font-display font-medium text-base sm:text-lg md:text-xl lg:text-2xl text-black leading-snug">
+                <p className="font-display font-medium text-base sm:text-lg md:text-sm lg:text-2xl text-black leading-snug">
                   To be the{" "}
                   <span className="text-primary font-black">leading frozen food manufacturer</span>{" "}
                   in the Philippines. Defining a sustainable future and creating the path to achieve it. Generate economic value to our partners and consumers.

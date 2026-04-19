@@ -16,7 +16,7 @@ export const Footer = () => (
           <div className="flex items-center gap-3 mb-6 sm:mb-8">
             <img src={logo} alt="Uncle Roy Logo" className="h-10 sm:h-12 w-auto object-contain brightness-0 invert" />
           </div>
-          <h3 className="font-display font-black text-3xl sm:text-4xl md:text-6xl leading-[1.05] tracking-tight">
+          <h3 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight">
             Got a craving<br />
             or a <span className="text-primary">big order?</span>
           </h3>

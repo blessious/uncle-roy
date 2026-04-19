@@ -32,7 +32,7 @@ export const Recipes = () => (
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-12">
         <Reveal direction="up" className="max-w-2xl">
           <p className="text-sm font-semibold tracking-widest uppercase text-secondary mb-2 sm:mb-3">Cook with Uncle Roy</p>
-          <h2 className="font-display font-black text-3xl sm:text-4xl md:text-6xl leading-tight">
+          <h2 className="font-display font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight">
             Recipe cooking<br />instruction.
           </h2>
         </Reveal>
